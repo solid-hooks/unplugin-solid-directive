@@ -1,6 +1,6 @@
 {
   "name": "unplugin-solid-directive",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "unplugin for auto inject solid directives",
   "license": "MIT",
   "author": "subframe7536",
@@ -116,8 +116,9 @@
     "dev": "vite serve dev",
     "build": "tsup",
     "test": "vitest --run",
-    "release": "pnpm test && pnpm build && pnpm lint:code && pnpm lint:types && bumpp && npm publish",
-    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx} --fix --cache",
+    "release": "pnpm lint && pnpm test && pnpm build && bumpp --all && npm publish",
+    "lint": "pnpm lint:code && pnpm lint:types",
+    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx} --fix",
     "lint:types": "tsc --noEmit"
   },
   "peerDependencies": {
