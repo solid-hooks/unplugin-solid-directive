@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
-import { DirectivePlugin } from '..'
+import { DirectivePlugin } from '../src/index'
 
 export default defineConfig({
   resolve: {

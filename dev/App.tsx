@@ -2,7 +2,7 @@ import { type Component, createSignal } from 'solid-js'
 import { model } from './model'
 
 const App: Component = () => {
-  const [text, setText] = createSignal('')
+  const [text, setText] = createSignal('test')
   return (
     <>
       <input type="text" use:model={[text, setText]} />

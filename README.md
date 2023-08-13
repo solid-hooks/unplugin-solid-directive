@@ -101,6 +101,12 @@ module.exports = {
 ```
 <br></details>
 
+## Options
+
 the option descriptions are well-documented in jsdoc
+
+or see in [`type.ts`](./src/type.ts)
+
+## Example
 
 Example(vite): [`dev/`](./dev/)
