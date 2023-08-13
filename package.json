@@ -1,17 +1,16 @@
 {
-  "name": "{{name_of_lib}}",
+  "name": "vite-plugin-solid-directive",
   "version": "0.0.0",
-  "description": "{{desc_of_lib}}",
+  "description": "vite plugin for auto insert solid directives",
   "license": "MIT",
-  "author": "{{me}}",
-  "contributors": [],
+  "author": "subframe7536",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/{{me}}/{{name_of_lib}}.git"
+    "url": "git+https://github.com/subframe7536/vite-plugin-solid-directive.git"
   },
-  "homepage": "https://github.com/{{me}}/{{name_of_lib}}#readme",
+  "homepage": "https://github.com/subframe7536/vite-plugin-solid-directive#readme",
   "bugs": {
-    "url": "https://github.com/{{me}}/{{name_of_lib}}/issues"
+    "url": "https://github.com/subframe7536/vite-plugin-solid-directive/issues"
   },
   "files": [
     "dist"
@@ -19,54 +18,117 @@
   "private": false,
   "sideEffects": false,
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index/index.cjs",
+  "module": "./dist/index/index.js",
+  "types": "./dist/index/index.d.ts",
   "browser": {},
   "exports": {
-    "solid": {
-      "development": "./dist/dev.jsx",
-      "import": "./dist/index.jsx"
-    },
-    "development": {
+    ".": {
+      "development": {
+        "import": {
+          "types": "./dist/index/index.d.ts",
+          "default": "./dist/index/dev.js"
+        },
+        "require": {
+          "types": "./dist/index/index.d.cts",
+          "default": "./dist/index/dev.cjs"
+        }
+      },
       "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/dev.js"
+        "types": "./dist/index/index.d.ts",
+        "default": "./dist/index/index.js"
+      },
+      "require": {
+        "types": "./dist/index/index.d.cts",
+        "default": "./dist/index/index.cjs"
       }
     },
-    "import": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+    "./esbuild": {
+      "import": {
+        "types": "./dist/esbuild/index.d.ts",
+        "default": "./dist/esbuild/index.js"
+      },
+      "require": {
+        "types": "./dist/esbuild/index.d.cts",
+        "default": "./dist/esbuild/index.cjs"
+      }
+    },
+    "./rollup": {
+      "import": {
+        "types": "./dist/rollup/index.d.ts",
+        "default": "./dist/rollup/index.js"
+      },
+      "require": {
+        "types": "./dist/rollup/index.d.cts",
+        "default": "./dist/rollup/index.cjs"
+      }
+    },
+    "./rspack": {
+      "import": {
+        "types": "./dist/rspack/index.d.ts",
+        "default": "./dist/rspack/index.js"
+      },
+      "require": {
+        "types": "./dist/rspack/index.d.cts",
+        "default": "./dist/rspack/index.cjs"
+      }
+    },
+    "./vite": {
+      "import": {
+        "types": "./dist/vite/index.d.ts",
+        "default": "./dist/vite/index.js"
+      },
+      "require": {
+        "types": "./dist/vite/index.d.cts",
+        "default": "./dist/vite/index.cjs"
+      }
+    },
+    "./webpack": {
+      "import": {
+        "types": "./dist/webpack/index.d.ts",
+        "default": "./dist/webpack/index.js"
+      },
+      "require": {
+        "types": "./dist/webpack/index.d.cts",
+        "default": "./dist/webpack/index.cjs"
+      }
     }
   },
-  "typesVersions": {},
+  "typesVersions": {
+    "*": {
+      "esbuild": [
+        "./dist/esbuild/index.d.ts"
+      ],
+      "rollup": [
+        "./dist/rollup/index.d.ts"
+      ],
+      "rspack": [
+        "./dist/rspack/index.d.ts"
+      ],
+      "vite": [
+        "./dist/vite/index.d.ts"
+      ],
+      "webpack": [
+        "./dist/webpack/index.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "dev": "vite serve dev",
     "build": "tsup",
-    "test": "concurrently pnpm:test:*",
-    "test:client": "vitest",
-    "test:ssr": "pnpm run test:client --mode ssr",
-    "prepublishOnly": "pnpm build",
-    "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"dev/**/*.{js,ts,json,css,tsx,jsx}\"",
-    "lint": "concurrently pnpm:lint:*",
-    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
-    "lint:types": "tsc --noEmit",
-    "update-deps": "pnpm up -Li"
+    "test": "vitest --run",
+    "prepublishOnly": "pnpm test && pnpm build && pnpm lint:code && pnpm lint:types",
+    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx} --fix --cache",
+    "lint:types": "tsc --noEmit"
   },
   "peerDependencies": {
     "solid-js": "^1.6.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
-    "@typescript-eslint/parser": "^6.1.0",
-    "concurrently": "^8.2.0",
-    "esbuild": "^0.18.15",
-    "esbuild-plugin-solid": "^0.5.0",
+    "@subframe7536/eslint-config": "^0.2.3",
+    "bumpp": "^9.1.1",
     "eslint": "^8.45.0",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-no-only-tests": "^3.1.0",
     "jsdom": "^22.1.0",
-    "prettier": "3.0.0",
     "solid-js": "^1.7.8",
     "tsup": "^7.1.0",
     "tsup-preset-solid": "^2.0.1",
@@ -80,7 +142,11 @@
   ],
   "packageManager": "pnpm@8.6.0",
   "engines": {
-    "node": ">=18",
-    "pnpm": ">=8.6.0"
+    "node": ">=16",
+    "pnpm": ">=8"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^5.0.2",
+    "unplugin": "^1.4.0"
   }
 }
