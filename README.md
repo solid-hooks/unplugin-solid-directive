@@ -1,36 +1,106 @@
 <p>
-  <img width="100%" src="https://assets.solidjs.com/banner?type={{name_of_lib}}&background=tiles&project=%20" alt="{{name_of_lib}}">
+  <img width="100%" src="https://assets.solidjs.com/banner?type=unplugin-solid-directive&background=tiles&project=%20" alt="unplugin-solid-directive">
 </p>
 
-# {{name_of_lib}}
+# unplugin-solid-directive
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
-{{desc_of_lib}}
-
-> **Note** After using this template, you have to search and replace all `{{name_of_lib}}` and similar strings
-> with appropriate texts.
->
-> `{{name_of_lib}}` should be a **kebab-case** string representing the name of you monorepo.
->
-> `{{desc_of_lib}}` should be a **Normal case** string with the description of the repository.
->
-> `{{me}}` should be a **kebab-case** string from your profile URL.
+Auto inject solid directives
 
 ## Quick start
 
 Install it:
 
 ```bash
-npm i {{name_of_lib}}
+npm i unplugin-solid-directive
 # or
-yarn add {{name_of_lib}}
+yarn add unplugin-solid-directive
 # or
-pnpm add {{name_of_lib}}
+pnpm add unplugin-solid-directive
 ```
 
-Use it:
 
-```tsx
-import {{name_of_lib}} from '{{name_of_lib}}'
+<details>
+<summary>Vite</summary><br>
+
+```ts
+// vite.config.ts
+import Directive from 'unplugin-solid-directive/vite'
+
+export default defineConfig({
+  plugins: [
+    Directive({ /* options */ }),
+  ],
+})
 ```
+
+
+<br></details>
+
+<details>
+<summary>Rollup</summary><br>
+
+```ts
+// rollup.config.js
+import Directive from 'unplugin-solid-directive/rollup'
+
+export default {
+  plugins: [
+    Directive({ /* options */ }),
+    // other plugins
+  ],
+}
+```
+
+<br></details>
+
+
+<details>
+<summary>Webpack</summary><br>
+
+```ts
+// webpack.config.js
+module.exports = {
+  /* ... */
+  plugins: [
+    require('unplugin-solid-directive/webpack')({ /* options */ }),
+  ],
+}
+```
+
+<br></details>
+
+<details>
+<summary>esbuild</summary><br>
+
+```ts
+// esbuild.config.js
+import { build } from 'esbuild'
+
+build({
+  /* ... */
+  plugins: [require('unplugin-solid-directive/esbuild')()],
+})
+```
+
+<br></details>
+
+
+<details>
+<summary>Rspack</summary><br>
+
+```ts
+// rspack.config.js
+module.exports = {
+  /* ... */
+  plugins: [
+    require('unplugin-solid-directive/rspack')({ /* options */ }),
+  ],
+}
+```
+<br></details>
+
+the option descriptions are well-documented in jsdoc
+
+Example(vite): [`dev/`](./dev/)

@@ -6,7 +6,7 @@ export type DirectiveConfig = {
    */
   module: string
   /**
-   * directives name
+   * directives name, it wll auto match the usage in file
    *
    * if `isDefault` is `true`, the first one will be the default
    */
@@ -16,7 +16,6 @@ export type DirectiveConfig = {
    */
   isDefault?: boolean
 }[]
-export type Directives = string | DirectiveConfig
 export type Config = {
   /**
    * directive injects
@@ -24,14 +23,34 @@ export type Config = {
    * if is `string`, it will directily inject to matched file
    *
    * you can use {@link DirectiveConfig} to better control the inject
-   * @example 'import directive from module\nimport { directive } from module'
+   * @example
+   * string:
+   * ```
+   * 'import directive from module\nimport { directive } from module'
+   * ```
+   * @example
+   * DirectiveConfig:
+   * ```ts
+   * [
+   *   {
+   *     directive: 'directive',
+   *     module: 'module',
+   *   },
+   * ],
+   * ```
+   * the generated inject will be:
+   * ```ts
+   * import { directive } from 'module'
+   * ```
    */
-  directives: Directives
+  directives: string | DirectiveConfig
   /**
+   * transform file path include pattern
    * @default [/\.[jt]sx?$/]
    */
   include?: FilterPattern
   /**
+   * transform file path exclude pattern
    * @default [/node_modules/, /\.git/]
    */
   exclude?: FilterPattern
