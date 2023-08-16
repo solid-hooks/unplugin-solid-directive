@@ -1,6 +1,6 @@
 {
   "name": "unplugin-solid-directive",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "unplugin for auto inject solid directives",
   "license": "MIT",
   "author": "subframe7536",
