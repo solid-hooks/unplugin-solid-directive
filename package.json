@@ -1,7 +1,7 @@
 {
   "name": "unplugin-solid-directive",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "unplugin for auto inject solid directives",
   "author": "subframe7536",
   "license": "MIT",
@@ -125,7 +125,7 @@
     "lint:types": "tsc --noEmit"
   },
   "peerDependencies": {
-    "solid-js": "^1.6.0"
+    "solid-js": "^1"
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.0.5",

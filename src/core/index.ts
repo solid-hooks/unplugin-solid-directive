@@ -35,10 +35,7 @@ export default createUnplugin((config: Config) => {
       if (typeof injectDirective === 'string') {
         return `${injectDirective}\n${code}`
       }
-      const injects = generateInjects(
-        code,
-        injectDirective,
-      )
+      const injects = generateInjects(code, injectDirective)
       return `${injects}\n${code}`
     },
   }
