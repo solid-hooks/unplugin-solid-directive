@@ -8,7 +8,7 @@
 
 Auto inject solid directives
 
-## Quick start
+## quick start
 
 Install it:
 
@@ -101,12 +101,16 @@ module.exports = {
 ```
 <br></details>
 
-## Options
+## options
 
 the option descriptions are well-documented in jsdoc
 
-or see in [`type.ts`](./src/type.ts)
+or see in [`type.ts`](./src/core/type.ts)
 
-## Example
+## example
 
-Example(vite): [`dev/`](./dev/)
+[`dev/`](./dev/vite.config.ts)
+
+### more powerful
+
+[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)

@@ -1,4 +1,6 @@
-export function matchUseStatements(str: string): string[] {
+import type { DirectiveMap } from '.'
+
+export function matchSolidDirectiveStatements(str: string): string[] {
   const matches = []
 
   for (const match of str.matchAll(/_\$use\((\w+),/g)) {
@@ -10,22 +12,23 @@ export function matchUseStatements(str: string): string[] {
 
 export function generateInjects(
   code: string,
-  injectDirective: Map<string, { module: string; isDefault?: boolean | undefined }>,
+  injectDirective: DirectiveMap,
 ): string {
   const modules: Record<string, { directives: string[]; isDefault?: boolean }> = {}
-  for (const directive of matchUseStatements(code)) {
+  for (const directive of matchSolidDirectiveStatements(code)) {
     if (injectDirective.has(directive)) {
-      const { module, isDefault } = injectDirective.get(directive)!
-      if (modules[module]) {
-        modules[module]!.directives.push(directive)
-        modules[module]!.isDefault = isDefault
+      const { from, isDefault } = injectDirective.get(directive)!
+      if (modules[from]) {
+        modules[from]!.directives.push(directive)
+        modules[from]!.isDefault = isDefault
       } else {
-        modules[module] = { directives: [directive], isDefault }
+        modules[from] = { directives: [directive], isDefault }
       }
     }
   }
   return Object.entries(modules)
     .map(([module, { directives, isDefault }]) =>
-      `import ${isDefault ? directives[0] : `{ ${directives.join(', ')} }`} from "${module}"\n`)
+      `import ${isDefault ? directives[0] : `{ ${directives.join(', ')} }`} from "${module}"\n`,
+    )
     .join('')
 }

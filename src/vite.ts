@@ -1,3 +1,3 @@
-import plugin from './core/plugin'
+import plugin from './core'
 
 export default plugin.vite

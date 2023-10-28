@@ -1,20 +1,15 @@
 import { defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
-import { DirectivePlugin } from '../src/index'
+import DirectivePlugin from '../src'
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      src: '/src',
-    },
-  },
   plugins: [
     solidPlugin(),
     DirectivePlugin.vite({
       directives: [
         {
-          directive: 'model',
-          module: './model',
+          from: './model',
+          imports: 'model',
         },
       ],
     }),

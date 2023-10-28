@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 import type { Signal } from 'solid-js'
 import { createRenderEffect, onCleanup } from 'solid-js'
 
