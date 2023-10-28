@@ -10,11 +10,9 @@ export function matchUseStatements(str: string): string[] {
 
 export function generateInjects(
   code: string,
-  injectDirective: Map<
-    string, { module: string; isDefault?: boolean | undefined }
-  >,
+  injectDirective: Map<string, { module: string; isDefault?: boolean | undefined }>,
 ): string {
-  const modules: Record<string, { directives: string[]; isDefault?: boolean } > = {}
+  const modules: Record<string, { directives: string[]; isDefault?: boolean }> = {}
   for (const directive of matchUseStatements(code)) {
     if (injectDirective.has(directive)) {
       const { module, isDefault } = injectDirective.get(directive)!

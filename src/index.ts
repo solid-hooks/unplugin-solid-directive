@@ -1,4 +1,1 @@
-import DirectivePlugin from './core/plugin'
-
-export * from './type'
-export { DirectivePlugin }
+export type { DirectiveConfig, Config } from './core/plugin'

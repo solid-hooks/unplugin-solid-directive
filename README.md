@@ -1,5 +1,3 @@
-# DEPRECATE: prefer to use [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)
-
 <p>
   <img width="100%" src="https://assets.solidjs.com/banner?type=unplugin-solid-directive&background=tiles&project=%20" alt="unplugin-solid-directive">
 </p>
