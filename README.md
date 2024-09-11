@@ -20,7 +20,6 @@ yarn add unplugin-solid-directive
 pnpm add unplugin-solid-directive
 ```
 
-
 <details>
 <summary>Vite</summary><br>
 
@@ -34,7 +33,6 @@ export default defineConfig({
   ],
 })
 ```
-
 
 <br></details>
 
@@ -54,7 +52,6 @@ export default {
 ```
 
 <br></details>
-
 
 <details>
 <summary>Webpack</summary><br>
@@ -85,7 +82,6 @@ build({
 ```
 
 <br></details>
-
 
 <details>
 <summary>Rspack</summary><br>

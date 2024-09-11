@@ -1,5 +1,5 @@
-import type { Signal } from 'solid-js'
 import { createRenderEffect, onCleanup } from 'solid-js'
+import type { Signal } from 'solid-js'
 
 declare module 'solid-js' {
   namespace JSX {

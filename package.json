@@ -119,10 +119,8 @@
     "dev": "vite serve dev",
     "build": "tsup",
     "test": "vitest --run",
-    "release": "pnpm lint && pnpm test && pnpm build && bumpp --all && npm publish",
-    "lint": "pnpm lint:code && pnpm lint:types",
-    "lint:code": "eslint --max-warnings 0 src/**/*.{js,ts,tsx,jsx} --fix",
-    "lint:types": "tsc --noEmit"
+    "release": "bun run lint && bun run test && bun run build && bumpp --all && npm publish",
+    "format": "eslint --fix"
   },
   "peerDependencies": {
     "@rollup/pluginutils": "^5.0.5",

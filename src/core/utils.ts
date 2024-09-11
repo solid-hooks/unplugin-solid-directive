@@ -4,7 +4,9 @@ export function matchSolidDirectiveStatements(str: string): string[] {
   const matches = []
 
   for (const match of str.matchAll(/_\$use\((\w+),/g)) {
-    match[1] && matches.push(match[1])
+    if (match[1]) {
+      matches.push(match[1])
+    }
   }
 
   return matches
@@ -14,7 +16,7 @@ export function generateInjects(
   code: string,
   injectDirective: DirectiveMap,
 ): string {
-  const modules: Record<string, { directives: string[]; isDefault?: boolean }> = {}
+  const modules: Record<string, { directives: string[], isDefault?: boolean }> = {}
   for (const directive of matchSolidDirectiveStatements(code)) {
     if (injectDirective.has(directive)) {
       const { from, isDefault } = injectDirective.get(directive)!
