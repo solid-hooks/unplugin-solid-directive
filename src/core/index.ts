@@ -1,5 +1,5 @@
-import { createUnplugin } from 'unplugin'
 import { createFilter } from '@rollup/pluginutils'
+import { createUnplugin } from 'unplugin'
 import { generateInjects } from './utils'
 import type { Config } from './types'
 
